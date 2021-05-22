@@ -9,12 +9,12 @@ const app = {
         products: []
     },
     getData() {
-        console.log('get data start');
+        // console.log('get data start');
         axios.get(`${apiUrl}/api/${apiPath}/admin/products?`)
             .then(res => {
                 if (res.data.success) {
                     this.data.products = res.data.products;
-                    console.log(this.data.products);
+                    // console.log(this.data.products);
                     this.render();
                 }
             })
@@ -23,7 +23,7 @@ const app = {
             })
     },
     deleteData(e) {
-        console.log('delete data start');
+        // console.log('delete data start');
         const id = e.target.dataset.id;
         console.log(id);
         axios.delete(`${apiUrl}/api/${apiPath}/admin/product/${id}`)
@@ -53,7 +53,7 @@ const app = {
             })
     },
     render() {
-        console.log('render start');
+        // console.log('render start');
         const productList = document.querySelector('#productList');
         productCount.textContent = this.data.products.length;
         let str = "";
@@ -79,7 +79,7 @@ const app = {
         productList.innerHTML = str;
         // delete product
         const deleteBtn = document.querySelectorAll('.deleteBtn');
-        console.log(deleteBtn);
+        // console.log(deleteBtn);
         deleteBtn.forEach(item => {
             item.addEventListener('click', this.deleteData);
         })
